@@ -62,15 +62,15 @@ def get_ssl_expiry(domain):
     print(now)
 
     days_remaining = (expiry_date - now).days
-    return days_remaining
+    return days_remaining, expiry_date
 
 # Example usage
 
 domain = get_domain()
-days_remaining = get_ssl_expiry(domain)
+days_remaining, expiry_date = get_ssl_expiry(domain)
 
 if days_remaining <= 30:
-    print(f"{domain}'s SSL certificate expires in: {days_remaining} days. \nPlease advise requester to renew the SSL certificate.")
+    print(f"{domain}'s SSL certificate expires on {expiry_date} in {days_remaining} days. \nPlease advise requester to renew the SSL certificate.")
 else:
-    print(f"{domain}'s SSL certificate expires in: {days_remaining} days. \nClose the ticket.")
+    print(f"{domain}'s SSL certificate expires on {expiry_date} in {days_remaining} days. \nClose the ticket.")
 
